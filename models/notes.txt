@@ -1,0 +1,31 @@
+Models
+
+Category
+- Name: string
+
+Board
+- Name: string
+- Description: string
+- Category: Category ID
+- icon: string (image ref)
+
+Topic
+- Title: String
+- Author: User ID
+- Bord: Bord ID
+- (?) Initial Post: Post ID
+
+Post
+- Text: String
+- Author: Author ID
+Topic: Topic ID
+- Post Date: timestamp
+- Last Edited: timestamp
+
+User
+- Username: string
+- Password: (?)Hash
+- Display Name: String
+- Join Data: timestamp
+- Last online: timestamp
+- Role: [User, moderator, admin]
