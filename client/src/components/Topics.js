@@ -9,7 +9,7 @@ export default function Topics(){
     const [topics, setTopics] = useState([])
 
 function getTopics(){
-    axios.get("http://localhost:9000")
+    axios.get("/topics")
     .then(res => {
         setTopics(res.data)
     })
@@ -17,7 +17,7 @@ function getTopics(){
 }
 
 function addTopic(newTopic){
-    axios.post("http://localhost:9000", newTopic)
+    axios.post("/protected/topics", newTopic)
     .then(res => {
         setTopics(previousTopics => [...previousTopics, res.data ] )
     })

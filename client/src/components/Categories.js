@@ -11,7 +11,7 @@ export default function Categories(){
     const [categories, setCategories] = useState([])
 
 function getCategories(){
-    axios.get("http://localhost:9000")
+    axios.get("/categories")
     .then(res => {
         setCategories(res.data)
     })
@@ -19,7 +19,7 @@ function getCategories(){
 }
 
 function addCategory(newCategory){
-    axios.post("http://localhost:9000", newCategory)
+    axios.post("/protected/categories", newCategory)
     .then(res => {
         setCategories(previousCategories => [...previousCategories, res.data ] )
     })

@@ -16,7 +16,7 @@ export default function AddTopicForm(props){
         setInputs(initInputs)
     }
     return (
-        <form onSubmit={handleSubmitTopic}>
+        <form className="topic-form"onSubmit={handleSubmitTopic}>
             <input
                 id="topic-input"
                 type="text"
@@ -25,7 +25,7 @@ export default function AddTopicForm(props){
                 onChange={handleChangeTopic}
                 placeholder="Topic Title"/>
             
-            <button id="add-topic-button">Add Category</button>
+            <button id="add-topic-button">Add Topic</button>
         </form>
     )
 }

@@ -7,9 +7,10 @@ import Replies from "./components/Replies"
 
 
 function App() {
+  //Menu holds Categories(Boards)
   return (
     <div className="App">
-      <Menu />
+      <Menu /> 
       <Topics />
       <Posts />
       <Replies />

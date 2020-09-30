@@ -147,11 +147,15 @@ background: #B86363;
   padding:15px;
   margin: 5px;
 }
+.topic-form {
+  margin-top: 200px;
+}
 .topic {
   background: #d49b9b;
 }
-
-
+.topic:hover > .posts-container {
+  width: 40%;
+}
 
 .posts-container {
   /* Rectangle 20 */
