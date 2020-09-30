@@ -1,5 +1,6 @@
 import React, {useState, useEffect, useRef} from "react"
 import User from "./User"
+import Categories from "./Categories"
 //import {Link, } from "react-router-dom"
 
 
@@ -36,11 +37,12 @@ export default function Menu (){
                 <User />
              <nav ref={dropdownRef} className={`menu ${isActive ? 'active' : 'inactive'}`}>
                 <ul>
-                    <li>Category</li>{// needs functionality with mapping here from database of categories}
-}
+                    <Categories />
                 </ul>
              </nav>
              </div>
         </>
     )
 }
+
+

@@ -80,7 +80,7 @@ img.menu-img {
    background: #FBE2E2;
    position: absolute;
    width: 230px;
-   height: 150px;
+   height: auto;
    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
    opacity: 0;
    visibility: hidden;
@@ -105,10 +105,12 @@ img.menu-img {
  
  .menu li{
    border-bottom: 1px solid #dddddd;
+   padding: 5px;
  
  }
  
  .menu li {
+  background: #FBE2E2;
    text-decoration: none;
    font-family: 'Roboto', sans-serif;
    font-weight: bolder;
@@ -117,18 +119,39 @@ img.menu-img {
    display: block;
  
  }
+ #category-input {
+   padding: 5px;
+   margin: 5px;
+
+ }
+
+ #add-category-button{
+   margin: 5px;
+  
+ }
+ #category-title {
+    margin:20px;
+ }
 
 .topics-container {
   /* Rectangle 2 */
 position: relative;
-display: inline-flex;
+display: inline;
 grid-column: 1/2;
-height: 900px;
 left: 0px;
 top: 0px;
 background: #B86363;
 
 }
+#topic-title {
+  padding:15px;
+  margin: 5px;
+}
+.topic {
+  background: #d49b9b;
+}
+
+
 
 .posts-container {
   /* Rectangle 20 */
