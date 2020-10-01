@@ -2,9 +2,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 const morgan = require("morgan");
 mongoose.connect("mongodb://localhost:27017/mod-5-forum-db",
-	{useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false},
+	{ useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false },
 ).then(() => console.log("Successfully connected to the database"))
-.catch(err => console.log(err));
+	.catch(err => console.log(err));
 
 const app = express();
 app.use(morgan("dev"));
