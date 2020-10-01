@@ -19,7 +19,7 @@ function getCategories(){
 }
 
 function addCategory(newCategory){
-    axios.post("/protected/categories", newCategory)
+    axios.post("protected/categories", newCategory)
     .then(res => {
         setCategories(previousCategories => [...previousCategories, res.data ] )
     })

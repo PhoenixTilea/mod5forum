@@ -16,7 +16,7 @@ export default function AddCategoryForm(props){
         setInputs(initInputs)
     }
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="categories-form" onSubmit={handleSubmit}>
             <input
                 id="category-input"
                 type="text"
