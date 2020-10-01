@@ -1,4 +1,13 @@
+Category Routes
+GET: /categories - Returns all categories in the database
+GET: /categories/:categoryId - Returns a specific category with a "topics" property, which is an array of topic objects (not ids)
+
 Topic Routes
 GET: /topics -Returns all topics
 GET: /topics?user=<userID>&&category=<categoryId> - Filter topics by user, category, or both
 GET: /topics/:topicId - Returns the specified topic with an 'initialPost' property, which is the data of its initial post, not the id
+
+Post Routes
+GET: /posts - Returns all posts (probably shouldn't do this without filters on a large database)
+GET: /posts?topic=<topicId>&&user=<userId> - Returns all posts filtered by topic, user, or both
+GET: /posts/postId - Get a specific post

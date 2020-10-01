@@ -6,9 +6,9 @@ const topicSchema = new Schema({
 		type: String,
 		required: true
 	},
-	board: {
+	category: {
 		type: Schema.Types.ObjectId,
-		ref: "Board",
+		ref: "Category",
 		required: true
 	},
 	user: {
@@ -21,10 +21,9 @@ const topicSchema = new Schema({
 		ref: "Post",
 		required: true
 	},
-	lastPost: {
-		type: Schema.Types.ObjectId,
-		ref: "Post",
-		required: true
+	lastUpdated: {
+		type: Date,
+		default: Date.now()
 	}
 });
 

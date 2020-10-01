@@ -11,16 +11,18 @@ const app = express();
 app.use(morgan("dev"));
 app.use(express.json());
 
-app.use("/categories", require("./routes/Category"));
-app.use("/topics", require("./routes/topics"));
-app.use("/posts", require("./routes/posts"));
+app.use("/categories", require("./routes/categoryRouter"));
+app.use("/topics", require("./routes/topicRouter"));
+app.use("/posts", require("./routes/postRouter"));
 
+/* Protected routes
 app.use("/protected", expressJwt({secret: process.env.SECRET, algorithms: ["HS256"]}));
 app.use("/protected/categories", require("./routes/protectedCategoryRouter"));
 app.use("/protected/topics", require("./routes/protectedTopicRouter"));
 app.use("/protected/posts", require("./routes/protectedPostRouter"));
+*/
 
 app.use(require("./middle/error"));
 
 const port = process.env.PORT || 8000;
-app.listen(() => console.log(`The server is listening on port ${port}`));
+app.listen(port, () => console.log(`The server is listening on port ${port}`));

@@ -1,5 +1,6 @@
 const express = require("express");
 const Topic = require("../models/Topic");
+const Post = require("../models/Post");
 
 const topicRouter = express.Router();
 
@@ -45,9 +46,8 @@ topicRouter.get("/:topicId", (req, res, next) => {
 			}
 			const resTopic = topic.toObject();
 			resTopic.initialPost = post;
-			res.status(200).send(topic);
+			res.status(200).send(resTopic);
 		});
-		
 	});
 });
 

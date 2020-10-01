@@ -30,7 +30,8 @@ const userSchema = new Schema({
 			ref: "Post"
 		}],
 		default: []
-	}
+	},
+	imgUrl: String
 });
 
 module.exports = mongoose.model("User", userSchema);
