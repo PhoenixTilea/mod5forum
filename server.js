@@ -7,6 +7,8 @@ mongoose.connect(process.env.DB_URL, {useNewUrlParser: true, useUnifiedTopology:
 .then(() => console.log("Successfully connected to the database"))
 .catch(err => console.log(err));
 
+
+//Middleware
 const app = express();
 app.use(morgan("dev"));
 app.use(express.json());
@@ -23,6 +25,13 @@ app.use("/protected/posts", require("./routes/protectedPostRouter"));
 */
 
 app.use(require("./middle/error"));
+
+//Routes
+app.use("/auth", require("./routes/authRouter"))
+app.use("/api", expressJwt({ secret: process.env.SECRET, algorithms: ["HS256"] }))
+// app.use(//api/etc for all other routes to require authentication first)
+
+
 
 const port = process.env.PORT || 8000;
 app.listen(port, () => console.log(`The server is listening on port ${port}`));
