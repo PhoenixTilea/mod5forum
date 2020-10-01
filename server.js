@@ -26,7 +26,5 @@ app.use("/api", expressJwt({ secret: process.env.SECRET, algorithms: ["HS256"] }
 
 
 const port = process.env.PORT || 8000;
-app.listen(() => console.log(`The server is listening on port ${port}`));
+app.listen(port,() => console.log(`The server is listening on port ${port}`));
 
-
-//branch
