@@ -13,28 +13,32 @@
   /* Rectangle 1 */
   position: absolute;
   width: 15%;
-  height: 150px;
+  height: auto;
   left: 1%;
   top: 1%;
+  padding-bottom: 10px;
   background: #FBE2E2;
   z-index: 1;
 }
 
 .userAvatar {
  /* Rectangle 4 */
-position: absolute;
-width: auto;
-height: 80%;
-margin: 5%;
+position: relative;
+width: 40%;
+height: auto;
+margin-top: 10%;
+margin-left: 10%;
 
 }
 
 .user-member-date {
   position: relative;
-  font-size: 9px;
-  float: left;
-  top: 75px;
-  left: 5px;
+  display: block;
+  font-size: 1vw;
+  margin: 0;
+  padding: 0;
+  left: 10px;
+ 
 
 }
 
@@ -79,13 +83,14 @@ img.menu-img {
  .menu {
    background: #FBE2E2;
    position: absolute;
+   top: 110%;
    width: 230px;
    height: auto;
-   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
    opacity: 0;
    visibility: hidden;
    transform: translateY(-20px);
-   transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+   transition: opacity 1s ease, transform 1s ease, visibility 1s;
  
  }
  
@@ -104,7 +109,7 @@ img.menu-img {
  }
  
  .menu li{
-   border-bottom: 1px solid #dddddd;
+   border-bottom: 1px solid #616060;
    padding: 5px;
  
  }
@@ -119,6 +124,7 @@ img.menu-img {
    display: block;
  
  }
+
  #category-input {
    padding: 5px;
    margin: 5px;
@@ -148,7 +154,8 @@ background: #B86363;
   margin: 5px;
 }
 .topic-form {
-  margin-top: 200px;
+  margin-top: 50%;;
+  margin-left: 5px;
 }
 .topic {
   background: #d49b9b;
