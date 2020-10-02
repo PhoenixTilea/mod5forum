@@ -29,4 +29,5 @@ app.use("/api/posts", require("./routes/protectedPostRouter"));
 app.use(require("./middle/error"));
 
 const port = process.env.PORT || 8000;
-app.listen(port, () => console.log(`The server is listening on port ${port}`));
+app.listen(port,() => console.log(`The server is listening on port ${port}`));
+
