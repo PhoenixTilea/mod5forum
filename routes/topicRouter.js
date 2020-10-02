@@ -17,7 +17,7 @@ topicRouter.get("/", (req, res, next) => {
 			filters.category = req.query.category;
 		}
 	}
-	Topic.find(filters, {$sort: {lastUpdated: -1}}, (err, topics) => {
+	Topic.find(filters, null, {$sort: {lastUpdated: -1}}, (err, topics) => {
 		if (err) {
 			res.status(500);
 			return next(err);
@@ -37,7 +37,7 @@ topicRouter.get("/:topicId", (req, res, next) => {
 			res.status(404);
 			return next(new Error("Topic not found."));
 		}
-		Post.find({topic: topicId}, {$sort: {postDate: 1}}, (err, posts) => {
+		Post.find({topic: topicId}, null, {$sort: {postDate: 1}}, (err, posts) => {
 			if (err) {
 				res.status(500);
 				return next(err);

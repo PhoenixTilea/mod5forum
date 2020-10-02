@@ -31,7 +31,7 @@ topicRouter.post("/:categoryId", (req, res, next) => {
 
 topicRouter.route("/:topicId")
 .put((req, res, next) => {
-	Topic.findOneByIdAndUpdate(req.params.topicId, req.body, {new: true}, (err, topic) => {
+	Topic.findByIdAndUpdate(req.params.topicId, req.body, {new: true}, (err, topic) => {
 		if (err) {
 			res.status(500);
 			return next(err);
@@ -40,6 +40,7 @@ topicRouter.route("/:topicId")
 	});
 })
 .delete((req, res, next) => {
+	const topicId = req.params.topicId;
 	Topic.findByIdAndDelete(topicId, (err, topic) => {
 		if (err) {
 			res.status(500);

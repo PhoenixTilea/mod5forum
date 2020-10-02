@@ -30,7 +30,7 @@ postRouter.post("/:topicId", (req, res, next) => {
 });
 
 // Edit or delete a post
-postRouter.route(".postId")
+postRouter.route("/:postId")
 .put((req, res, next) => {
 	req.body.lastEdited = Date.now();
 	Post.findByIdAndUpdate(req.params.postId, req.body, {new: true}, (err, post) => {
