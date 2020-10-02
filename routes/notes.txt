@@ -1,47 +1,13 @@
-Routes
+Category Routes
+GET: /categories - Returns all categories in the database
+GET: /categories/:categoryId - Returns a specific category with a "topics" property, which is an array of topic objects (not ids)
 
-/categories
-get: returns the list of categories
-post: add a new category
+Topic Routes
+GET: /topics -Returns all topics
+GET: /topics?user=<userID>&&category=<categoryId> - Filter topics by user, category, or both
+GET: /topics/:topicId - Returns the specified topic with an 'initialPost' property, which is the data of its initial post, not the id
 
-/category/id
-get: get the category and its list of boards
-post: add a new board to the category
-put: update an existing category
-delete: delete this category and all associated boards
-
-/boards
-get: get a list of all boards, optionally filted by category
-post: create a new board
-
-/boards/id
-get: Get a specific board and all associated topics
-post: Create a new topic on this board
-put: Update the board information
-delete: delete the specified board and all associated topics
-
-/topics
-get: get all created topics
-
-/topics/id
-get: Get the specified topic and all its associated posts
-post: Add a new post to this topic
-put: update the topic information
-delete: delete this topic and all associated posts
-
-/posts
-get: get all posts
-
-/post/id
-get: get the specified post
-put: update the specified post
-delete: delete the specified post
-
-/users
-get: Get a full list of users
-post: Create a new user
-
-/user/id
-get: get the specified user
-put: update the specified user
-delete: delete the specified user (must handle updating all topics and posts attached to that user)
+Post Routes
+GET: /posts - Returns all posts (probably shouldn't do this without filters on a large database)
+GET: /posts?topic=<topicId>&&user=<userId> - Returns all posts filtered by topic, user, or both
+GET: /posts/postId - Get a specific post
