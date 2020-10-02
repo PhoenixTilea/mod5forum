@@ -18,7 +18,7 @@ categoryRouter.post("/", (req, res, next) => {
 
 categoryRouter.route("/:categoryId")
 .put((req, res, next) => {
-Category.findOneAndUpdate({_id: req.params.categoryId}, req.body, {new: true}, (err, category) => {
+Category.findByIdAndUpdate(req.params.categoryId, req.body, {new: true}, (err, category) => {
 	if (err) {
 		res.status(500);
 		return next(err);
@@ -28,7 +28,8 @@ Category.findOneAndUpdate({_id: req.params.categoryId}, req.body, {new: true}, (
 })
 // Delete a category along with all topics and posts beneath it
 .delete((req, res, next) => {
-	Category.findOneAndDelete({_id: req.params._id}, (err, category) => {
+	const categoryId = req.params.categoryId;
+	Category.findByIdAndDelete(categoryId, (err, category) => {
 		if (err) {
 			res.status(500);
 			return next(err);
@@ -36,23 +37,22 @@ Category.findOneAndUpdate({_id: req.params.categoryId}, req.body, {new: true}, (
 			res.status(404);
 			return next(new Error("Category not found."));
 		}
-		const catId = category._id;
-		Topic.findAndDelete({category: catId}, (err, topics) => {
+		Topic.deleteMany({category: categoryId}, (err, topics) => {
 			if (err) {
 				res.status(404);
 				return next(err);
 			}
 			for (let i = 0; i < topics.length; i++) {
 				const topicId = topics[i]._id;
-				Post.findAndDelete({topic: topicId}, (err, posts) => {
+				Post.deleteMany({topic: topicId}, (err, posts) => {
 					if (err) {
 						res.status(500);
 						return next(err);
 					}
 				});
 			}
+			return res.status(203).send({message: `${category.title} and all associated topics and posts have been deleted.`});
 		});
-		return res.status(203).send({message: `${category.title} and all associated topics and posts have been deleted.`});
 	});
 });
 

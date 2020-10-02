@@ -1,13 +1,28 @@
 Category Routes
 GET: /categories - Returns all categories in the database
-GET: /categories/:categoryId - Returns a specific category with a "topics" property, which is an array of topic objects (not ids)
+GET: /categories/:categoryId - Returns the specified category and a topics array, sorted by most recently updated first
+POST: /api/categories - Create a new category
+PUT: /api/categories/:categoryId - Update the specified category
+DELETE: /api/categories/:categoryId - Deletes the category along with all topics and posts under it
+
 
 Topic Routes
 GET: /topics -Returns all topics
-GET: /topics?user=<userID>&&category=<categoryId> - Filter topics by user, category, or both
-GET: /topics/:topicId - Returns the specified topic with an 'initialPost' property, which is the data of its initial post, not the id
+GET: /topics?user=<userID>&&category=<categoryId>&&sort=asc - Get topics filtered by their author or their category. 
+	Sorted by most recently updated first, but this can be reversed by passing sort=asc
+GET: /topics/:topicId - Return this specified topic and its posted, sorted by creation date (oldest first)
+POST: /api/topics/:categoryId - Create a new topic under the specified category
+	MUST include data for the topic's initial post: {topic: <topic data>, post: <initial post data>}
+PUT: /api/topics/:topicId - Update the specified topic
+DELETE: /api/topics/:topicId - Deletes the specified topic and all posts attached to it
+
 
 Post Routes
 GET: /posts - Returns all posts (probably shouldn't do this without filters on a large database)
-GET: /posts?topic=<topicId>&&user=<userId> - Returns all posts filtered by topic, user, or both
+GET: /posts?topic=<topicId>&&user=<userId>&&sort=desc - Returns all posts filtered by topic, user, or both
+	Sorts posts oldest first, but sort=desc may be specified to reverse this
 GET: /posts/postId - Get a specific post
+POST: /api/posts/:topicId - Creates a new post under the specified topic
+PUT: /api/posts/:postId = Updates the specified post
+DELETE: /api/posts/:postId - Deletes the specified post
+	The initial post of a topic should be treated differently: The topic should be deleted, not its starting post (DELETE /api/topics/:topicId)

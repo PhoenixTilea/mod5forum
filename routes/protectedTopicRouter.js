@@ -1,5 +1,5 @@
 const express = require("express");
-const Topic = require("../modeuls/Topic");
+const Topic = require("../models/Topic");
 const Post = require("../models/Post");
 
 const topicRouter = express.Router();
@@ -31,7 +31,7 @@ topicRouter.post("/:categoryId", (req, res, next) => {
 
 topicRouter.route("/:topicId")
 .put((req, res, next) => {
-	Topic.findOneAndUpdate({_id: req.params.topicId}, req.body, {new: true}, (err, topic) => {
+	Topic.findOneByIdAndUpdate(req.params.topicId, req.body, {new: true}, (err, topic) => {
 		if (err) {
 			res.status(500);
 			return next(err);
@@ -40,7 +40,7 @@ topicRouter.route("/:topicId")
 	});
 })
 .delete((req, res, next) => {
-	Topic.findOneAndDelete({_id: topicId}, (err, topic) => {
+	Topic.findByIdAndDelete(topicId, (err, topic) => {
 		if (err) {
 			res.status(500);
 			return next(err);
@@ -48,7 +48,7 @@ topicRouter.route("/:topicId")
 			res.status(404);
 			return next(new Error("Topic not found."));
 		}
-		Post.findAndDelete({topic: topic._id}, (err, posts) => {
+		Post.deleteMany({topic: topicId}, (err, posts) => {
 			if (err) {
 				res.status(500);
 				return next(err);

@@ -6,6 +6,7 @@ const topicRouter = express.Router();
 
 // Get all topics
 // Filter by 'category' and/or 'user'
+// Sorted by most recently updated first
 topicRouter.get("/", (req, res, next) => {
 	const filters = {};
 	if (req.query) {
@@ -16,7 +17,7 @@ topicRouter.get("/", (req, res, next) => {
 			filters.category = req.query.category;
 		}
 	}
-	Topic.find(filters, (err, topics) => {
+	Topic.find(filters, {$sort: {lastUpdated: -1}}, (err, topics) => {
 		if (err) {
 			res.status(500);
 			return next(err);
@@ -25,10 +26,10 @@ topicRouter.get("/", (req, res, next) => {
 	});
 });
 
-// Get a specific topic with its initial post included
+// Get a specific topic and its posts sorted by oldest first
 topicRouter.get("/:topicId", (req, res, next) => {
 	const {topicId} = req.params;
-	Topic.findOne({_id: topicId}, (err, topic) => {
+	Topic.findById(topicId, (err, topic) => {
 		if (err) {
 			res.status(500);
 			return next(err);
@@ -36,17 +37,12 @@ topicRouter.get("/:topicId", (req, res, next) => {
 			res.status(404);
 			return next(new Error("Topic not found."));
 		}
-		Post.findOne({_id: topic._initialPost}, (err, post) => {
+		Post.find({topic: topicId}, {$sort: {postDate: 1}}, (err, posts) => {
 			if (err) {
 				res.status(500);
 				return next(err);
-			} else if (!post) {
-				res.status(404);
-				return next(new Error("Initial post not found."));
 			}
-			const resTopic = topic.toObject();
-			resTopic.initialPost = post;
-			res.status(200).send(resTopic);
+			res.status(200).send({topic, posts});
 		});
 	});
 });

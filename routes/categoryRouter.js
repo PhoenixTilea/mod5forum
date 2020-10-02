@@ -19,7 +19,7 @@ categoryRouter.get("/", (req, res, next) => {
 // Get a specific category and its topics
 categoryRouter.get("/:categoryId", (req, res, next) => {
 	const {categoryId} = req.params;
-	Category.findOne({_id: categoryId}, (err, category) => {
+	Category.findById(categoryId, (err, category) => {
 		if (err) {
 			res.status(500);
 			return next(err);
@@ -27,14 +27,12 @@ categoryRouter.get("/:categoryId", (req, res, next) => {
 			res.status(404);
 			return next(new Error("Category not found."));
 		}
-		Topic.find({category: categoryId}, (err, topics) => {
+		Topic.find({category: categoryId}, {$sort: {lastUpdated: -1}}, (err, topics) => {
 			if (err) {
 				res.status(500);
 				return next(err);
 			}
-			const resCategory = category.toObject();
-			resCategory.topics = topics;
-			return res.status(200).send(resCategory);
+			return res.status(200).send({category, topics});
 		});
 	});
 });
