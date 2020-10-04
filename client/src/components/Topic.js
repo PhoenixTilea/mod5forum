@@ -6,7 +6,10 @@ export default function Topic(props){
     return (
         <div className="topic">
           <User />
-          <h1 id="topic-title">{title}</h1>
+          <div className="topicDiv">
+            <h1 id="topic-title">{title}</h1>
+          </div>
+          <div class="arrow-left"></div>
         </div>
     )
 }

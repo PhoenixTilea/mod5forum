@@ -18,12 +18,12 @@ export default function AddReplyForm(props){
     return (
         <form className="reply-form"onSubmit={handleSubmitReply}>
             <input
-                id="reply-content"
+                id="reply-content-input"
                 type="text"
                 name="replyContent"
                 value={inputs.replyContent}
                 onChange={handleChangeReply}
-                placeholder="Reply Content"/>
+                placeholder="Reply to Post"/>
             
             <button id="add-reply-button">Add Reply</button>
         </form>
