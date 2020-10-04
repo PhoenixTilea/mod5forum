@@ -9,7 +9,7 @@ export default function Replies(){
     const [replies, setReplies] = useState([])
 
 function getReplies(){
-    axios.get("/replies")
+    axios.get("http://localhost:8000/replies")
     .then(res => {
         setReplies(res.data)
     })
@@ -17,7 +17,7 @@ function getReplies(){
 }
 
 function addReply(newReply){
-    axios.post("/protected/replies", newReply)
+    axios.post("http://localhost:8000/protected/replies", newReply)
     .then(res => {
         setReplies(previousReplies => [...previousReplies, res.data ] )
     })

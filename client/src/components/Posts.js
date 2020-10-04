@@ -6,10 +6,10 @@ import AddPostForm from './AddPostForm'
 
 export default function Posts(){
     
-    const [posts, setPosts] = useState([])
+    const [posts, setPosts] = useState([{content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",}])
 
 function getPosts(){
-    axios.get("/posts")
+    axios.get("http://localhost:8000/posts")
     .then(res => {
         setPosts(res.data)
     })
@@ -17,7 +17,7 @@ function getPosts(){
 }
 
 function addPost(newPost){
-    axios.post("/protected/posts", newPost)
+    axios.post("http://localhost:8000/protected/posts", newPost)
     .then(res => {
         setPosts(previousPosts => [...previousPosts, res.data ] )
     })
@@ -25,8 +25,8 @@ function addPost(newPost){
 
 }
 
-function deletePost(_id) {
-    axios.delete("/protected/posts", _id)
+function deletePost() {
+    axios.delete("http://localhost:8000/protected/posts/id",)
     .then(res => res.data)
     .catch((error) => {
       throw error.res.data
@@ -39,6 +39,7 @@ useEffect(() => {
 
 return (
     <div className="posts-container">
+        <h1>Posts</h1>
         {posts.map(post => <Post {...post} key={post.userName} deletePost={deletePost}/>)}
         <AddPostForm addPost={addPost}/>
     </div>
