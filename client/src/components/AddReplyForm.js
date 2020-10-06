@@ -4,12 +4,11 @@ import React, { useState } from 'react';
 export default function AddReplyForm(props){
     const initInputs = { replyContent: ""}
     const [inputs, setInputs] = useState(initInputs)
-
     function handleChangeReply (e) {
         const {name, value } = e.target
         setInputs(prevInputs => ({ ...prevInputs, [name]: value}))
     }
-
+   
     function handleSubmitReply(e){
         e.preventDefault()
         props.addReply(inputs)

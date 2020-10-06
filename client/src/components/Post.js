@@ -3,7 +3,7 @@ import User from "./User"
 import AddReplyForm from "./AddReplyForm"
 
 export default function Post(props){
-    const { content , _id} = props
+    const { text ,_id} = props
 
     function handleClickDeletePost() {
         props.deletePost(_id)
@@ -12,9 +12,9 @@ export default function Post(props){
     return (
         <div className="post">
             <User />
-            <h4 className="post-title">Post Title</h4>
+            <h3 className="post-title">What is Vanilla Javascript?</h3>
             <button id="delete-post-button" onClick={handleClickDeletePost}>Delete Post</button>
-            <p id="post-content">{content}</p>
+            <p id="post-content">{text}</p>
             <AddReplyForm />
             <hr></hr>
             

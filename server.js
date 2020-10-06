@@ -25,6 +25,7 @@ app.use("/api/categories", require("./routes/protectedCategoryRouter"));
 app.use("/api/topics", require("./routes/protectedTopicRouter"));
 app.use("/api/posts", require("./routes/protectedPostRouter"));
 
+
 // Error catch-all
 app.use(require("./middle/error"));
 

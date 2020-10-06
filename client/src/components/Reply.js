@@ -5,11 +5,11 @@ import AddReplyForm from "./AddReplyForm"
 
 
 export default function Reply(props){
-    const { replyContent } = props
+    
     return (
         <div className="reply">
          <User />
-          <p id="reply-content">{replyContent}</p>
+          <p id="reply-content"></p>
           <AddReplyForm />
           <Replies />
         </div>
