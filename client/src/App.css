@@ -2,6 +2,11 @@
   box-sizing:border-box;
 }
 
+html {
+  background: url("https://bloximages.chicago2.vip.townnews.com/heraldextra.com/content/tncms/assets/v3/editorial/b/70/b70d6645-202e-5b97-8878-fb9ece8fedd7/5820f6ab3cd3e.image.png?resize=400%2C193");
+
+}
+
 .App{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -9,10 +14,15 @@
   font-weight: bolder;
 
 }
-.menu-container {
+div.menu-container {
   /* Rectangle 1 */
   position: absolute;
+  grid-column:1/2;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
   width: 31%;
+  min-width: 350px;
   height: auto;
   max-height: 250px;
   left: 1%;
@@ -25,6 +35,7 @@
 
 .userAvatar {
  /* Rectangle 4 */
+display: inline-flex;
 position: relative;
 width: 50px;
 height: auto;
@@ -53,17 +64,32 @@ margin-left: 10%;
 
 
 img.menu-img {
-  width: 3vw;
-  height: 3vw;
-
+  position: relative;
+  width:50%;
+  right: 20px;
+ 
+}
+.v-school-logo {
+  display: inline-flex;
+  grid-column: 2/3;
+  grid-row: 1/2;
+  margin-top: 40%;
+  width: 60%;
+  background:  #FBE2E2;
+}
+.forum-label {
+  position: relative;
+  grid-column: 2/3;
+  left: 6%;
+  bottom: 100%;
+  margin: 0;
 }
 
 .menu-trigger {
   background: whitesmoke;
-  position: relative;
-  float: right;
   cursor: pointer;
   display: flex;
+  grid-column: 3/5;
   justify-content: space-between;
   align-items: center;
   padding: 4px 6px;
@@ -71,6 +97,7 @@ img.menu-img {
   border: none;
   vertical-align: middle;
   transition: box-shadow 0.4s ease;
+  margin-top: 30px;
 
 }
 
@@ -135,6 +162,12 @@ img.menu-img {
  
  }
 
+
+ .categories-label {
+   font-family: 'Roboto', sans-serif;
+   font-weight: bolder;
+   margin: 10px;
+ }
  #category-input {
    padding: 5px;
    margin: 5px;
@@ -151,17 +184,38 @@ img.menu-img {
 
 .topics-container {
   /* Rectangle 2 */
-position: relative;
+position: absolute;
+width: 33%;
 padding-top: 150px;
-width: 100%;
+visibility: visible;
+transform: translateY(-20px);
+transition: opacity 1s ease, transform 1s ease, visibility 1s;
 left: 0px;
 top: 0px;
 background: #B86363;
+opacity: .9;
+
 
 }
+.topics-container.active {
+  visibility: visible;
+  opacity: 1;
+  transform:translateY(0);
+}
+.category-header {
+  position:relative;
+  text-align: center;
+  margin-top: 20%;
+  font-weight: bolder;
+  color: white;
+  z-index: 1;
+}
 .user {
-  width: 70px;
-  float: left;
+  display: inline-block;
+  grid-column: 1/2;
+  grid-row: 1/2;
+  
+  
   
 }
 
@@ -185,26 +239,26 @@ background: #B86363;
   margin: 5px;
  
 }
-.category-header {
-  text-align: center;
-  font-size: 3em;
-  color: white;
-}
+
 #topic-title {
    margin:20px;
    padding: 15px;
    color: rgb(53, 43, 43);
    font-weight: bolder;
+   font-size: 2.5vw;
 }
 
 .topic {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   margin: 5px;
   height: 20%;
-  width: 100%;
+  width: 95%;
   background: #d49b9b;
   transition-property: margin-left;
   transition-property: width;
   transition-duration: 1s;
+  
 }
 
 
@@ -217,10 +271,12 @@ background: #B86363;
  
 }
   .arrow-left{
+    grid-column: 3/5;
     visibility: hidden;
     position: relative;
+    display: flex;
+    justify-content: right;
     top: 30%;
-    float: right;
     width: 0; 
     height: 0;
     z-index:1; 
@@ -244,10 +300,23 @@ width: 100%;
 height: 900px;
 top: 0px;
 background: #FFFFFF;
+visibility: hidden;
+transform: translateY(-20px);
+transition: opacity 1s ease, transform 1s ease, visibility 1s;
 
 }
+.posts-active {
+  visibility: visible;
+  opacity: 1;
+  transform:translateY(0);
+}
+.post-header {
+  padding-left: 5%;
+}
 .post-title {
+  position: relative;
   text-decoration: underline;
+  left: 50px;
 
 }
 .post {
@@ -301,7 +370,13 @@ display: inline-flex;
 width: 100%;
 height: 900px;
 background: #E9E0E0;
+visibility: hidden;
+transform: translateY(-20px);
+transition: opacity 1s ease, transform 1s ease, visibility 1s;
 
 }
-
-
+.replies-active {
+  visibility: visible;
+  opacity: 1;
+  transform:translateY(0);
+}
