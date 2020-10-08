@@ -4,9 +4,10 @@ import Topic from './Topic'
 import AddTopicForm from './AddTopicForm'
 
 
-export default function Topics(){
+
+export default function Topics(props){
     
-    const [topics, setTopics] = useState([])
+    const [topics, setTopics] = useState([{title: "HTML"}, {title: "CSS"}, {title: "Javascript"}, {title: "React"}, {title: "ES6"}])
 
 function getTopics(){
     axios.get("/topics")
@@ -17,7 +18,7 @@ function getTopics(){
 }
 
 function addTopic(newTopic){
-    axios.post("/protected/topics", newTopic)
+    axios.post("/api/topics", newTopic)
     .then(res => {
         setTopics(previousTopics => [...previousTopics, res.data ] )
     })
@@ -30,7 +31,9 @@ useEffect(() => {
 
 
 return (
+   
     <div className="topics-container">
+        <h1 className="category-header" >Category Topics</h1>
         {topics.map(topic => <Topic {...topic} key={topic.title} />)}
         <AddTopicForm addTopic={addTopic}/>
     </div>

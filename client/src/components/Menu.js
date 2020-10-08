@@ -32,9 +32,12 @@ export default function Menu (){
         <>
              <div className="menu-container">
              <button onClick={onClick} className="menu-trigger">
+                 <h2 className="categories-label"> Categories </h2>
                 <img className="menu-img"src= "https://static.thenounproject.com/png/696519-200.png"  alt="menu"/>
              </button>
                 <User />
+                <img className="v-school-logo" src="https://media-exp1.licdn.com/dms/image/C560BAQEbL8tsKTdbXA/company-logo_200_200/0?e=2159024400&v=beta&t=dHUW39BvOzMcgmpcQNsmgdcQlSHSgge4aPbnpXEGabM" alt="v-school logo"/>
+                <h3 className="forum-label">FORUM</h3>
              <nav ref={dropdownRef} className={`menu ${isActive ? 'active' : 'inactive'}`}>
                 <ul>
                     <Categories />

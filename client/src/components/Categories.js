@@ -8,7 +8,7 @@ import AddCategoryForm from './AddCategoryForm'
 
 export default function Categories(){
     
-    const [categories, setCategories] = useState([])
+    const [categories, setCategories] = useState([{title: "Web Development"}, {title: "User Interface UI"}, {title: "Career Development"}, {title: "Alumni"}])
 
 function getCategories(){
     axios.get("/categories")
@@ -19,7 +19,7 @@ function getCategories(){
 }
 
 function addCategory(newCategory){
-    axios.post("protected/categories", newCategory)
+    axios.post("/api/categories", newCategory)
     .then(res => {
         setCategories(previousCategories => [...previousCategories, res.data ] )
     })

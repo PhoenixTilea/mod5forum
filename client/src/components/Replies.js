@@ -17,7 +17,7 @@ function getReplies(){
 }
 
 function addReply(newReply){
-    axios.post("/protected/replies", newReply)
+    axios.post("/replies", newReply)
     .then(res => {
         setReplies(previousReplies => [...previousReplies, res.data ] )
     })
@@ -31,8 +31,8 @@ useEffect(() => {
 
 
 return (
-    <div className="replies-container">
-        {replies.map(reply => <Reply {...reply} key={reply.userName} />)}
+    <div className="replies-container"> Replies
+        {replies.map(reply => <Reply {...reply} key={reply.userNam}  />)}
         <AddReplyForm addReply={addReply}/>
     </div>
 )

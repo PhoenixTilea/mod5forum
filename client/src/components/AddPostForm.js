@@ -18,12 +18,12 @@ export default function AddPostForm(props){
     return (
         <form className="post-form"onSubmit={handleSubmitPost}>
             <input
-                id="post-content"
+                id="post-content-input"
                 type="text"
                 name="postContent"
                 value={inputs.postContent}
                 onChange={handleChangePost}
-                placeholder="Post Content"/>
+                placeholder="Post New Content"/>
             
             <button id="add-post-button">Add Post</button>
         </form>
