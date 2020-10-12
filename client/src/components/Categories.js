@@ -26,6 +26,13 @@ function addCategory(newCategory){
     .catch(error => console.log(error))
 
 }
+function deleteCategory(categoryId){
+    axios.delete(`/categories/${categoryId}`)
+        .then(res => {setCategories(prevCategories => prevCategories.filter(category => category._id !== categoryId))})
+        .catch(err => console.log(err))
+}
+
+
 useEffect(() => {
    getCategories()
 },[])

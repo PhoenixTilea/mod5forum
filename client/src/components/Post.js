@@ -1,23 +1,47 @@
-import React from "react"
+import React, {useState} from "react"
 import User from "./User"
-import AddReplyForm from "./AddReplyForm"
+import AddPostForm from "./AddPostForm"
+
 
 export default function Post(props){
-    const { text ,_id} = props
+    const { text, title ,_id} = props
 
-    function handleClickDeletePost() {
-        props.deletePost(_id)
-    }
+    const [editToggle, setEditToggle] = useState(false)
+
+    
     
     return (
         <div className="post">
+            {!editToggle ?
+            <>
             <User />
-            <h3 className="post-title">What is Vanilla Javascript?</h3>
-            <button id="delete-post-button" onClick={handleClickDeletePost}>Delete Post</button>
+            <h3 className="post-title">{title}</h3>
             <p id="post-content">{text}</p>
-            <AddReplyForm />
+            <button 
+            id="delete-btn" 
+                onClick={()=> props.deletePost(_id)}>
+                Delete
+            </button>
+            <button 
+            className="edit-btn"
+                onClick={()=> setEditToggle(prevEditToggle=> !prevEditToggle)}>
+                Edit
+          </button>
+          <hr></hr>
+          </>
+          :
+          <>
+          <AddPostForm  
+            text={text}
+            btnText="Submit Edit"
+            />
+            <button
+                onClick={()=> setEditToggle(prevEditToggle => !prevEditToggle)}>
+                Close
+            </button>
             <hr></hr>
-            
+            </>
+            }
         </div>
     )
 }

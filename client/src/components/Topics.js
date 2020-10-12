@@ -33,9 +33,9 @@ useEffect(() => {
 return (
    
     <div className="topics-container">
+        <AddTopicForm addTopic={addTopic}/>
         <h1 className="category-header" >Category Topics</h1>
         {topics.map(topic => <Topic {...topic} key={topic.title} />)}
-        <AddTopicForm addTopic={addTopic}/>
     </div>
 )
 }

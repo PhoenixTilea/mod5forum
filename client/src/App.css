@@ -101,8 +101,11 @@ img.menu-img {
 
 }
 
-.menu-trigger:hover {
+
+.menu-trigger:active, .menu-trigger:focus {
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+  border: 2px solid black;
+  
 
 }
 
@@ -134,6 +137,7 @@ img.menu-img {
    opacity: 1;
    visibility: visible;
    transform: translateY(0);
+  
  
  }
  
@@ -184,8 +188,8 @@ img.menu-img {
 
 .topics-container {
   /* Rectangle 2 */
-position: absolute;
-width: 33%;
+position: relative;
+width: 100%;
 padding-top: 150px;
 visibility: visible;
 transform: translateY(-20px);
@@ -197,7 +201,7 @@ opacity: .9;
 
 
 }
-.topics-container.active {
+.topics-container {
   visibility: visible;
   opacity: 1;
   transform:translateY(0);
@@ -230,6 +234,8 @@ opacity: .9;
   font-family: 'Roboto', sans-serif;
 }
 #topic-input {
+  position: relative;
+  top: 30px;
   padding: 5px;
   margin: 5px;
 
@@ -237,6 +243,8 @@ opacity: .9;
 
 #add-topic-button{
   margin: 5px;
+  position: relative;
+  top: 30px;
  
 }
 
@@ -271,7 +279,7 @@ opacity: .9;
  
 }
   .arrow-left{
-    grid-column: 3/5;
+    grid-column: 4/5;
     visibility: hidden;
     position: relative;
     display: flex;
@@ -300,9 +308,10 @@ width: 100%;
 height: 900px;
 top: 0px;
 background: #FFFFFF;
-visibility: hidden;
+visibility: visible;
 transform: translateY(-20px);
 transition: opacity 1s ease, transform 1s ease, visibility 1s;
+opacity: .9;
 
 }
 .posts-active {
@@ -311,12 +320,13 @@ transition: opacity 1s ease, transform 1s ease, visibility 1s;
   transform:translateY(0);
 }
 .post-header {
-  padding-left: 5%;
+  padding-top: 20px;
+  text-align: center;
 }
 .post-title {
   position: relative;
   text-decoration: underline;
-  left: 50px;
+  text-align: center;
 
 }
 .post {
@@ -332,6 +342,8 @@ transition: opacity 1s ease, transform 1s ease, visibility 1s;
 #post-content-input {
   padding: 5px;
   margin: 5px;
+  width: auto;
+  height: auto;
 
 }
 #reply-content-input {
@@ -355,11 +367,17 @@ font-family: 'Roboto', sans-serif;
 font-weight: bolder;
  
 }
-#delete-post-button {
+.delete-btn {
   position: relative;
   float: right;
   margin: 5px;
 }
+.edit-btn {
+  position: relative;
+  margin: 5px;
+}
+
+
 
 
 
@@ -370,9 +388,10 @@ display: inline-flex;
 width: 100%;
 height: 900px;
 background: #E9E0E0;
-visibility: hidden;
+visibility: visible;
 transform: translateY(-20px);
 transition: opacity 1s ease, transform 1s ease, visibility 1s;
+opacity: .9;
 
 }
 .replies-active {

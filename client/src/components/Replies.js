@@ -32,8 +32,10 @@ useEffect(() => {
 
 return (
     <div className="replies-container"> Replies
-        {replies.map(reply => <Reply {...reply} key={reply.userNam}  />)}
-        <AddReplyForm addReply={addReply}/>
+        {//replies.map(reply => <Reply {...reply} key={reply.userName}  />)}
+}
+        {//<AddReplyForm addReply={addReply}/>
+}
     </div>
 )
 }
