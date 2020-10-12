@@ -1,0 +1,73 @@
+Schemas
+
+User Creation
+- username (String, must be unique)
+- password (String)
+- imgUrl (String, Optional)
+- isAdmin (Boolean, defaults to false)
+
+Response Schema
+- user (Object) {
+-- _id (String)
+-- username (String)
+-- joinDate (Date String)
+-- imgUrl (String, Optional)
+}
+- token (String)
+
+User Login
+- username (String)
+- password (String)
+(Response Schema same as User Creation)
+
+
+Category Creation
+- title (String)
+- description (String, Optional)
+
+Response Schema
+- _id (String)
+- title (String)
+- description (String, Optional)
+
+
+Topic Creation
+- topic (Object) {
+-- title (String)
+}
+- post (Object) {
+-- text (String)
+}
+
+Response Schema
+- topic (Object) {
+-- _id (String)
+-- title (String)
+-- category (CategoryID String)
+-- user (UserID String)
+-- lastEdited (Date String)
+}
+- post (Object) {
+-- _id (String)
+-- text (String)
+-- topic (TopicID String)
+-- user (UserID String)
+-- postDate (Date String)
+-- lastEdited (Date String)
+-- upVotes (Array [UserId String])
+-- downVotes (Array [UserID String])
+}
+
+
+Post Creation
+- text (String)
+
+Response Schema
+- _id (String)
+- text (String)
+- topic (TopicID String)
+- user (UserID String)
+- postDate (Date String)
+- lastEdited (Date String)
+- upVotes (Array [UserId String])
+- downVotes (Array [UserID String])

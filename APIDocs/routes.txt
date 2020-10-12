@@ -1,3 +1,7 @@
+Authentication Routes
+POST: /auth/signup - Creates a new user and passes back the user and generated token
+POST: /auth/login - Checks credentials and returns the user and a new token on success
+
 Category Routes
 GET: /categories - Returns all categories in the database
 GET: /categories/:categoryId - Returns the specified category and a topics array, sorted by most recently updated first
@@ -26,3 +30,5 @@ POST: /api/posts/:topicId - Creates a new post under the specified topic
 PUT: /api/posts/:postId = Updates the specified post
 DELETE: /api/posts/:postId - Deletes the specified post
 	The initial post of a topic should be treated differently: The topic should be deleted, not its starting post (DELETE /api/topics/:topicId)
+PUT: /upvote/:postId - Toggles the upvote for the authenticated user
+PUT: /downvote/:postId - Toggles the downvote for the authenticated user

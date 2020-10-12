@@ -51,4 +51,42 @@ postRouter.route("/:postId")
 	});
 });
 
+// Voting
+postRouter.put("/upvote/:postId", (req, res, next) => {
+	Post.findById(req.params.postId, (err, post) => {
+		if (err) {
+			res.status(500);
+			return next(err);
+		} else if (!post) {
+			res.status(404);
+			return next(new Error("Post not found."));
+		}
+		post.toggleUpVote(req.user._id, (err, updatedPost) => {
+			if (err) {
+				res.status(500);
+				return next(err);
+			}
+			res.status(200).send(updatedPost);
+		});
+	});
+});
+postRouter.put("/downvote/:postId", (req, res, next) => {
+	Post.findById(req.params.postId, (err, post) => {
+		if (err) {
+			res.status(500);
+			return next(err);
+		} else if (!post) {
+			res.status(404);
+			return next(new Error("Post not found."));
+		}
+		post.toggleDownVote(req.user._id, (err, updatedPost) => {
+			if (err) {
+				res.status(500);
+				return next(err);
+			}
+			res.status(200).send(updatedPost);
+		});
+	});
+});
+
 module.exports = postRouter;
