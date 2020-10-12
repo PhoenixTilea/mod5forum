@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 
 export default function AddCategoryForm(props){
-    const initInputs = { title: ""}
+    const initInputs = { title: props.title || ""}
     const [inputs, setInputs] = useState(initInputs)
 
     function handleChange (e) {

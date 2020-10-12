@@ -2,7 +2,13 @@ import React, { useState } from 'react';
 
 
 export default function AddPostForm(props){
-    const initInputs = { postContent: ""}
+
+    const initInputs = { text: props.text || "",
+         topic: props.topic || "", 
+         user: props.user || "", 
+         postDate: props.postDate || "", 
+         lastEdited: props.lastEdited || ""}
+
     const [inputs, setInputs] = useState(initInputs)
 
     function handleChangePost (e) {
@@ -20,12 +26,14 @@ export default function AddPostForm(props){
             <input
                 id="post-content-input"
                 type="text"
-                name="postContent"
-                value={inputs.postContent}
+                name="text"
+                value={inputs.text}
                 onChange={handleChangePost}
-                placeholder="Post New Content"/>
+                placeholder="Post New Content"
+                btnTex="Add Post"
+                />
             
-            <button id="add-post-button">Add Post</button>
+            <button id="add-post-button" >{props.btnText}</button>
         </form>
     )
 }

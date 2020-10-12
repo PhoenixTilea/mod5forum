@@ -4,7 +4,7 @@ import Topic from "./Topic"
 
 
 export default function Category(props){
-    const { title } = props
+    const { title, _id} = props
     const sidebarRef = useRef(null);
     const [isActive, setIsActive]= useState(false);
     const onClick = () => setIsActive(!isActive);
@@ -28,7 +28,11 @@ export default function Category(props){
     return (
         <div className="category"  >
           <h1 onClick={onClick} id="category-title">{title}</h1>
-          <nav ref={sidebarRef} className={`topics-container ${isActive ? 'active' : 'inactive'}`}/> 
+          {//<div ref={sidebarRef} className={`topics-container ${isActive ? 'active' : 'inactive'}`}></div> 
+          }
+          <button 
+          className="delete-btn"
+          onClick={() => props.deleteCategory(_id)}>Delete</button>
           <hr></hr>
         </div>
     )
