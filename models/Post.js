@@ -24,13 +24,34 @@ const postSchema = new Schema({
 		type: Date
 	},
 	upVotes: {
-		type: Number,
-		default: 0
+	type: [{
+	type: Schema.Types.ObjectId,
+	ref: "User"
+}]
 	},
 	downVotes: {
-		type: Number,
-		default: 0
+		type: [{
+	type: Schema.Types.ObjectId,
+	ref: "User"
+}]
 	}
 });
+
+postSchema.methods.toggleUpVote = function (user, callback) {
+	if (this.upVotes.includes(user)) {
+		this.upVotes.pull(user);
+	} else {
+		this.upVotes.addToSet(user);
+	}
+	this.save(callback);
+};
+postSchema.methods.toggleDownVote = function (user, callback) {
+	if (this.downVotes.includes(user)) {
+		this.downVotes.pull(user);
+	} else {
+		this.downVotes.addToSet(user);
+	}
+	this.save(callback);
+};
 
 module.exports = mongoose.model("Post", postSchema);

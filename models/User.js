@@ -17,20 +17,6 @@ const userSchema = new Schema({
 		type: Date,
 		default: Date.now()
 	},
-	upVotedPosts: {
-		type: [{
-			type: Schema.Types.ObjectId,
-			ref: "Post"
-		}],
-		default: []
-	},
-	downVotedPosts: {
-		type: [{
-			type: Schema.Types.ObjectId,
-			ref: "Post"
-		}],
-		default: []
-	},
 	imgUrl: String
 });
 
