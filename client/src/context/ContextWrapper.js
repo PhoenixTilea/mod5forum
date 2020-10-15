@@ -1,13 +1,19 @@
 import React from "react";
-import { UserContextProvider } from "./UserContext";
-import { CategoryContextProvider } from "./CategoryContext";
+import UserProvider from "./UserContext";
+import CategoryProvider from "./CategoryContext";
+import TopicProvider from "./TopicContext";
+import PostProvider from "./PostContext";
 
 export default function ContextWrapper(props) {
 	return (
-		<UserContextProvider>
-			<CategoryContextProvider>
-			{props.children}
-			</CategoryContextProvider>
-		</UserContextProvider>
+		<UserProvider>
+			<CategoryProvider>
+				<TopicProvider>
+					<PostProvider>
+					{props.children}
+				</PostProvider>
+			</TopicProvider>
+			</CategoryProvider>
+		</UserProvider>
 	);
 }

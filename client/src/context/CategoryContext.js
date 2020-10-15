@@ -2,10 +2,10 @@ import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { UserContext } from "./UserContext";
 
-const CategoryContext = React.createContext();
+export const CategoryContext = React.createContext();
 
-export function CategoryContextProvider(props) {
-	const { userAxios } = useContext(Usercontext);
+export default function CategoryProvider(props) {
+	const { userAxios } = useContext(UserContext);
 	const [categories, setCategories] = useState([]);
 	const [currentCategory, setCurrentCategory] = useState(null); // Should be a category ID
 	
@@ -23,7 +23,7 @@ export function CategoryContextProvider(props) {
 	};
 	
 	const updateCategory = (id, data) => {
-		userAxios.put`"/api/categories/${id}`, data).then(response => {
+		userAxios.put(`/api/categories/${id}`, data).then(response => {
 			const index = categories.findIndex(c => c._id === id);
 			const updated = [...categories];
 			updated[index] = response.data;
@@ -38,7 +38,7 @@ export function CategoryContextProvider(props) {
 		}).catch(err => console.dir(err));
 	};
 	
-	const value = {categories, currentCategory, setcurrentCategory, addCategory, updateCategory, deleteCategory};
+	const value = {categories, currentCategory, setCurrentCategory, addCategory, updateCategory, deleteCategory};
 	return (
 		<CategoryContext.Provider value={value}>
 			{props.children}
