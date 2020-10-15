@@ -30,10 +30,9 @@ export default function AddPostForm(props){
                 value={inputs.text}
                 onChange={handleChangePost}
                 placeholder="Post New Content"
-                btnTex="Add Post"
                 />
             
-            <button id="add-post-button" >{props.btnText}</button>
+            <button id="add-post-button" >Post</button>
         </form>
     )
 }

@@ -1,39 +1,49 @@
 import React, {useRef, useState, useEffect}from "react"
+import SignInForm from "./SignInForm"
 import Topic from "./Topic"
+import AddCategoryForm from "./AddCategoryForm"
 
 
 
 export default function Category(props){
     const { title, _id} = props
-    const sidebarRef = useRef(null);
-    const [isActive, setIsActive]= useState(false);
-    const onClick = () => setIsActive(!isActive);
+    const [editToggle, setEditToggle] = useState(false)
 
-    useEffect(()=> {
-        const pageClickEvent = (e) => {
-            // If the active element exists and is clicked outside of
-            if (sidebarRef.current !== null && !sidebarRef.current.contains(e.target)) {
-              setIsActive(!isActive);
-            }
-          };
-        if (isActive) {
-            window.addEventListener('click', pageClickEvent);
-        }
-        return()=> {
-            window.removeEventListener('click', pageClickEvent);
-        }
-     }, [isActive])
-
-     
     return (
         <div className="category"  >
-          <h1 onClick={onClick} id="category-title">{title}</h1>
-          {//<div ref={sidebarRef} className={`topics-container ${isActive ? 'active' : 'inactive'}`}></div> 
-          }
+          {!editToggle ?
+          <>
+          <h1 id="category-title">{title}</h1>
+
           <button 
           className="delete-btn"
-          onClick={() => props.deleteCategory(_id)}>Delete</button>
+          onClick={() => props.deleteCategory(_id)}>
+            Delete
+          </button>
+          <button
+            className="edit-btn"
+            onClick={()=> setEditToggle(prevEditToggle => !prevEditToggle)}>
+              Edit
+            </button>
+            <br></br>
           <hr></hr>
+            </>
+            :
+            <>
+            <hr></hr>
+              <AddCategoryForm 
+                title={title}
+                btnText="Submit Edit"
+                submit={props.editCategory}
+              />
+              <br></br>
+              <hr></hr>
+              <button
+                onClick={()=> setEditToggle(prevEditToggle => !prevEditToggle)}>
+                  Close
+                </button>
+            </>
+          }
         </div>
     )
 }
