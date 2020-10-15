@@ -31,6 +31,7 @@ export default function Menu (){
     return(
         <>
              <div className="menu-container">
+             <button id="login-button">log in</button>
              <button onClick={onClick} className="menu-trigger">
                  <h2 className="categories-label"> Categories </h2>
                 <img className="menu-img"src= "https://static.thenounproject.com/png/696519-200.png"  alt="menu"/>

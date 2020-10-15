@@ -90,6 +90,7 @@ img.menu-img {
   cursor: pointer;
   display: flex;
   grid-column: 3/5;
+  grid-row: 1/2;
   justify-content: space-between;
   align-items: center;
   padding: 4px 6px;
@@ -100,11 +101,19 @@ img.menu-img {
   margin-top: 30px;
 
 }
-
+#login-button {
+  height: 20px;
+  grid-row: 1/2;
+  grid-column: 3/5;
+  font-family: Roboto;
+  font-weight: bolder;
+  
+}
 
 .menu-trigger:active, .menu-trigger:focus {
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
   border: 2px solid black;
+  outline: none;
   
 
 }
@@ -190,6 +199,7 @@ img.menu-img {
   /* Rectangle 2 */
 position: relative;
 width: 100%;
+min-width: 380px;
 padding-top: 150px;
 visibility: visible;
 transform: translateY(-20px);
@@ -305,6 +315,7 @@ opacity: .9;
   /* Rectangle 20 */
 position: relative;
 width: 100%;
+min-width: 380px;
 height: 900px;
 top: 0px;
 background: #FFFFFF;
@@ -377,7 +388,11 @@ font-weight: bolder;
   margin: 5px;
 }
 
-
+.closeEditing {
+  margin-top: 0;
+  position: relative;
+  bottom: 40px;
+}
 
 
 
@@ -386,6 +401,7 @@ font-weight: bolder;
 position: relative;
 display: inline-flex;
 width: 100%;
+min-width: 380px;
 height: 900px;
 background: #E9E0E0;
 visibility: visible;
