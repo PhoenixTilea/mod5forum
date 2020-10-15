@@ -31,7 +31,14 @@ function deleteCategory(categoryId){
         .then(res => {setCategories(prevCategories => prevCategories.filter(category => category._id !== categoryId))})
         .catch(err => console.log(err))
 }
+function editCategory(updates, categoryId){
+    axios.put(`/categories/${categoryId}`, updates)
+    .then(res => {
+        setCategories(prevCategories => prevCategories.filter(category => category._id !== categoryId ? category : res.data))
 
+    })
+    .catch(err => console.log(err))
+}
 
 useEffect(() => {
    getCategories()
@@ -41,9 +48,15 @@ useEffect(() => {
 return (
     <div className="category-container">
        
-        <AddCategoryForm addCategory={addCategory}/>
-
-        {categories.map(category => <Category {...category} key={category.title} />)}
+        <AddCategoryForm 
+            addCategory={addCategory}
+            btnText="AddCategory"/>
+            {categories.map(category => 
+            <Category {...category} 
+            key={category.title} 
+            deleteCategory={deleteCategory}
+            editCategory={editCategory}
+        />)}
 
     </div>
 )

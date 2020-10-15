@@ -35,9 +35,9 @@ export default function Post(props){
             text={text}
             btnText="Submit Edit"
             />
-            <button
+            <button className="closeEditing"
                 onClick={()=> setEditToggle(prevEditToggle => !prevEditToggle)}>
-                Close
+                Close Editing
             </button>
             <hr></hr>
             </>

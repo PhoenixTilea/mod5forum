@@ -7,7 +7,7 @@ export default function AddCategoryForm(props){
 
     function handleChange (e) {
         const {name, value } = e.target
-        setInputs(prevInputs => ({ ...prevInputs, [name]: value}))
+        setInputs(prevCategories => ({ ...prevCategories, [name]: value}))
     }
 
     function handleSubmit(e){
@@ -23,9 +23,11 @@ export default function AddCategoryForm(props){
                 name="title"
                 value={inputs.title}
                 onChange={handleChange}
-                placeholder="Category Title"/>
+                placeholder="Category Title"
+                btnText="Add Category"/>
+                
             
-            <button id="add-category-button">Add Category</button>
+            <button id="add-category-button">Add</button>
         </form>
     )
 }
