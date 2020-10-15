@@ -24,7 +24,7 @@ app.use("/api", expressJwt({ secret: process.env.SECRET, algorithms: ["HS256"] }
 app.use("/api/categories", require("./routes/protectedCategoryRouter"));
 app.use("/api/topics", require("./routes/protectedTopicRouter"));
 app.use("/api/posts", require("./routes/protectedPostRouter"));
-
+app.use("/api/user", require("./routes/protectedUserRouter"));
 
 // Error catch-all
 app.use(require("./middle/error"));

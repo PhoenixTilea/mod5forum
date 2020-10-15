@@ -2,19 +2,18 @@ Authentication Routes
 POST: /auth/signup - Creates a new user and passes back the user and generated token
 POST: /auth/login - Checks credentials and returns the user and a new token on success
 
+User Routes
+GET: /api/user - Returns the user object for the authenticated sender
+
 Category Routes
 GET: /categories - Returns all categories in the database
-GET: /categories/:categoryId - Returns the specified category and a topics array, sorted by most recently updated first
 POST: /api/categories - Create a new category
 PUT: /api/categories/:categoryId - Update the specified category
 DELETE: /api/categories/:categoryId - Deletes the category along with all topics and posts under it
 
 
 Topic Routes
-GET: /topics -Returns all topics
-GET: /topics?user=<userID>&&category=<categoryId>&&sort=asc - Get topics filtered by their author or their category. 
-	Sorted by most recently updated first, but this can be reversed by passing sort=asc
-GET: /topics/:topicId - Return this specified topic and its posted, sorted by creation date (oldest first)
+GET: /topics/:categoryId - Returns all topics in the given category, sorted by last updated first
 POST: /api/topics/:categoryId - Create a new topic under the specified category
 	MUST include data for the topic's initial post: {topic: <topic data>, post: <initial post data>}
 PUT: /api/topics/:topicId - Update the specified topic
@@ -22,10 +21,7 @@ DELETE: /api/topics/:topicId - Deletes the specified topic and all posts attache
 
 
 Post Routes
-GET: /posts - Returns all posts (probably shouldn't do this without filters on a large database)
-GET: /posts?topic=<topicId>&&user=<userId>&&sort=desc - Returns all posts filtered by topic, user, or both
-	Sorts posts oldest first, but sort=desc may be specified to reverse this
-GET: /posts/postId - Get a specific post
+GET: /posts/:topicId - Returns all posts under the given topic, sorted by oldest first
 POST: /api/posts/:topicId - Creates a new post under the specified topic
 PUT: /api/posts/:postId = Updates the specified post
 DELETE: /api/posts/:postId - Deletes the specified post
