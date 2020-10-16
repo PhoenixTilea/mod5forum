@@ -11,6 +11,8 @@ export default function AddPostForm(props){
 
     const [inputs, setInputs] = useState(initInputs)
 
+    
+
     function handleChangePost (e) {
         const {name, value } = e.target
         setInputs(prevInputs => ({ ...prevInputs, [name]: value}))
@@ -23,16 +25,16 @@ export default function AddPostForm(props){
     }
     return (
         <form className="post-form"onSubmit={handleSubmitPost}>
-            <input
+            <textarea
                 id="post-content-input"
                 type="text"
                 name="text"
                 value={inputs.text}
                 onChange={handleChangePost}
-                placeholder="Post New Content"
+                placeholder="Reply/Post Content"
                 />
             
-            <button id="add-post-button" >Post</button>
+            <button id="add-post-button">{props.btnText}</button>
         </form>
     )
 }

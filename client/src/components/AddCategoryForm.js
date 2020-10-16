@@ -24,10 +24,10 @@ export default function AddCategoryForm(props){
                 value={inputs.title}
                 onChange={handleChange}
                 placeholder="Category Title"
-                btnText="Add Category"/>
-                
+                btnText="Submit"
+                /> 
+            <button>{props.btnText}</button>
             
-            <button id="add-category-button">Add</button>
         </form>
     )
 }

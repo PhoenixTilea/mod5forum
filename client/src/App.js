@@ -3,7 +3,7 @@ import './App.css';
 import Menu from "./components/Menu"
 import Topics from "./components/Topics"
 import Posts from "./components/Posts"
-import Replies from "./components/Replies"
+
 
 
 function App() {
@@ -13,8 +13,6 @@ function App() {
       <Menu /> 
       <Topics />
       <Posts />
-      <Replies />
-
     </div>
   );
 }

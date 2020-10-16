@@ -43,7 +43,7 @@ return (
     <div className="posts-container">
         <h1 className="post-header">Javascript Posts</h1>
         {posts.map(post => <Post {...post} key={post.text} deletePost={deletePost}/>)}
-        <AddPostForm addPost={addPost}/>
+        
     </div>
 )
 }

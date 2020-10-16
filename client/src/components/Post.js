@@ -3,6 +3,7 @@ import User from "./User"
 import AddPostForm from "./AddPostForm"
 
 
+
 export default function Post(props){
     const { text, title ,_id} = props
 
@@ -27,10 +28,12 @@ export default function Post(props){
                 onClick={()=> setEditToggle(prevEditToggle=> !prevEditToggle)}>
                 Edit
           </button>
+          <AddPostForm  btnText="Reply" />
           <hr></hr>
           </>
           :
           <>
+          <hr></hr>
           <AddPostForm  
             text={text}
             btnText="Submit Edit"
@@ -39,7 +42,7 @@ export default function Post(props){
                 onClick={()=> setEditToggle(prevEditToggle => !prevEditToggle)}>
                 Close Editing
             </button>
-            <hr></hr>
+           
             </>
             }
         </div>
