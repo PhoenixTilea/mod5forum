@@ -6,12 +6,14 @@ require("dotenv").config();
 mongoose.connect(process.env.DB_URL, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false})
 .then(() => console.log("Successfully connected to the database"))
 .catch(err => console.log(err));
+const cors = require('cors')
 
 
 //Middleware
 const app = express();
 app.use(morgan("dev"));
 app.use(express.json());
+app.use(cors())
 
 // Public routes
 app.use("/categories", require("./routes/categoryRouter"));
