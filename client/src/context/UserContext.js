@@ -3,9 +3,12 @@ import axios from "axios"
 
 export const UserContext = React.createContext()
 
-
-const userAxios = axios.create()
-let authInt;
+const userAxios = axios.create();
+userAxios.interceptors.request.use(config => {
+	const token = localStorage.getItem("token");
+	config.headers.Authorization = `Bearer ${token}`;
+	return config;
+});
 
 export default function UserProvider(props) {
     const initState = {
@@ -14,17 +17,6 @@ export default function UserProvider(props) {
         //ITEMS???????  DATA???????
     }
     const [userState, setUserState] = useState(initState)
-
-    useEffect(() => {
-		if (userState.token) {
-			userAxios.interceptors.request.eject(authInt);
-			authInt = userAxios.interceptors.request.use(config => {
-				config.headers.Authorization = `Bearer ${userState.token}`;
-				return config;
-			});
-		}
-		// eslint-disable-next-line
-	}, [userState]);
 	
 	useEffect(() => {
 		if (userState.token) {
