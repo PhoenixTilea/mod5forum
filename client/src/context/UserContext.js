@@ -72,6 +72,7 @@ export default function UserProvider(props) {
         localStorage.removeItem("token")
         localStorage.removeItem("user")
         setUserState(initState)
+
     }
 
     // function getData???????
