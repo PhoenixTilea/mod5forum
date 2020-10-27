@@ -4,11 +4,14 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import ContextWrapper from "./context/ContextWrapper";
+import { BrowserRouter } from 'react-router-dom'
 
 ReactDOM.render(
   <React.StrictMode>
     <ContextWrapper>
+      <BrowserRouter>
       <App />
+      </BrowserRouter>
     </ContextWrapper>
   </React.StrictMode>,
   document.getElementById('root')

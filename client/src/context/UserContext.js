@@ -3,6 +3,7 @@ import axios from "axios"
 
 export const UserContext = React.createContext()
 
+
 const userAxios = axios.create()
 let authInt;
 
@@ -37,7 +38,9 @@ export default function UserProvider(props) {
 	}, []);
 	
 	function signup(credentials) {
-        axios.post("auth/signup", credentials)
+        //axios.post("auth/signup", credentials)
+        axios.post("/auth/signup", credentials)
+      
             .then(res => {
                 const { user, token } = res.data
                 localStorage.setItem("token", token)
@@ -47,11 +50,11 @@ export default function UserProvider(props) {
                     token
                 }))
             })
-            .catch(err => console.dir(err.response.data.err.Msg)) //err.message
+            .catch(err => console.log(err.response.data.errMsg)) //err.message
     }
 
     function login(credentials) {
-        axios.post("auth/login", credentials)
+        axios.post("/auth/login", credentials)
             .then(res => {
                 const { user, token } = res.data
                 localStorage.setItem("token", token)
@@ -62,7 +65,7 @@ export default function UserProvider(props) {
                     token
                 }))
             })
-            .catch(err => console.dir(err.response.data.errMsg)) //err.message
+            .catch(err => console.log(err.response.data.errMsg)) //err.message
     }
 
     function logout() {

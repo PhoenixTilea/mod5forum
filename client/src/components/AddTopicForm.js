@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
-
+import React, { useState, useContext } from 'react';
+import {TopicContext} from '../context/TopicContext.js'
 
 export default function AddTopicForm(props){
-    const initInputs = { title: ""}
+    const initInputs = { title: "", category: "", user: {}, lastUpdated: ""}
     const [inputs, setInputs] = useState(initInputs)
+    const { addTopic, updateTopic, deleteTopic, topics } = useContext(TopicContext)
+    
 
     function handleChangeTopic (e) {
         const {name, value } = e.target
@@ -12,6 +14,7 @@ export default function AddTopicForm(props){
 
     function handleSubmitTopic(e){
         e.preventDefault()
+        console.log("props", props)
         props.addTopic(inputs)
         setInputs(initInputs)
     }

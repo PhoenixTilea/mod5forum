@@ -1,13 +1,24 @@
-import React, {useRef, useState, useEffect}from "react"
-import SignInForm from "./SignInForm"
+import React, {useRef, useState, useEffect, useContext}from "react"
+import SignInForm from "./Auth"
 import Topic from "./Topic"
 import AddCategoryForm from "./AddCategoryForm"
+import CategoryContext from "../context/CategoryContext"
+
 
 
 
 export default function Category(props){
-    const { title, _id} = props
+  const {title, _id, addCategory, values, deleteCategory} = props
     const [editToggle, setEditToggle] = useState(false)
+
+    const _handleSubmit = e=> {
+      props.handleSubmit(e, values)
+    }
+  //   function deleteCategory(categoryId){
+  //     axios.delete(`/categories/${categoryId}`)
+  //         .then(res => {setCategories(prevCategories => prevCategories.filter(category => category._id !== categoryId))})
+  //         .catch(err => console.log(err))
+  // }
 
     return (
         <div className="category"  >
@@ -17,7 +28,7 @@ export default function Category(props){
 
           <button 
           className="delete-btn"
-          onClick={() => props.deleteCategory(_id)}>
+          onClick={() => deleteCategory(_id)}>
             Delete
           </button>
           <button
@@ -32,9 +43,11 @@ export default function Category(props){
             <>
             <hr></hr>
               <AddCategoryForm 
+                addCategory={addCategory}
                 title={title}
                 btnText="Submit Edit"
-                submit={props.editCategory}
+                onSubmit={_handleSubmit}
+                id={_id}
               />
               <br></br>
               <hr></hr>

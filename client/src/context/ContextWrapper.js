@@ -11,8 +11,8 @@ export default function ContextWrapper(props) {
 				<TopicProvider>
 					<PostProvider>
 					{props.children}
-				</PostProvider>
-			</TopicProvider>
+					</PostProvider>
+				</TopicProvider>
 			</CategoryProvider>
 		</UserProvider>
 	);

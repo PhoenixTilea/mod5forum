@@ -1,6 +1,7 @@
 import React from "react"
 import User from "./User"
 
+
 export default function Topic(props){
     const { title } = props
     return (

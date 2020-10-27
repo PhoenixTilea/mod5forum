@@ -17,7 +17,10 @@ const userSchema = new Schema({
 		type: Date,
 		default: Date.now()
 	},
-	imgUrl: String
+	imgUrl: {
+		type: String,
+		default: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTPnVcve3YiuC1VJMAPpRKQtVc3uiwzmW5uEA&usqp=CAU"
+	}
 });
 
 //pre-save hook to encrypt user passwords on signup
