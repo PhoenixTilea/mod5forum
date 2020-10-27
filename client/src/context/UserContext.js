@@ -30,7 +30,6 @@ export default function UserProvider(props) {
 	}, []);
 	
 	function signup(credentials) {
-        //axios.post("auth/signup", credentials)
         axios.post("/auth/signup", credentials)
       
             .then(res => {
@@ -42,7 +41,7 @@ export default function UserProvider(props) {
                     token
                 }))
             })
-            .catch(err => console.log(err.response.data.errMsg)) //err.message
+            .catch(err => console.dir(err)) //err.message
     }
 
     function login(credentials) {
@@ -57,7 +56,7 @@ export default function UserProvider(props) {
                     token
                 }))
             })
-            .catch(err => console.log(err.response.data.errMsg)) //err.message
+            .catch(err => console.dir(err)); 
     }
 
     function logout() {
