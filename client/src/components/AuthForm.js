@@ -4,7 +4,7 @@ export default function AuthForm(props){
   const {
     handleChange, 
     handleSubmit, 
-    btnText, 
+    btntext, 
     inputs: {
       username, 
       password
@@ -27,7 +27,7 @@ export default function AuthForm(props){
         name="password" 
         onChange={handleChange} 
         placeholder="Password"/>
-      <button>{ btnText }</button>
+      <button>{ btntext }</button>
     </form>
   )
 }

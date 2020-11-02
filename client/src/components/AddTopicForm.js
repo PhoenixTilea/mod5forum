@@ -6,6 +6,7 @@ export default function AddTopicForm(props){
     const [inputs, setInputs] = useState(initInputs)
     const { addTopic, updateTopic, deleteTopic, topics } = useContext(TopicContext)
     
+    
 
     function handleChangeTopic (e) {
         const {name, value } = e.target
@@ -14,11 +15,13 @@ export default function AddTopicForm(props){
 
     function handleSubmitTopic(e){
         e.preventDefault()
-        console.log("props", props)
-        props.addTopic(inputs)
+        
+        addTopic(inputs)
         setInputs(initInputs)
     }
+    
     return (
+
         <form className="topic-form"onSubmit={handleSubmitTopic}>
             <input
                 id="topic-input"

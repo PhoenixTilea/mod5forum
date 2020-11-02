@@ -8,7 +8,7 @@ export const TopicContext = React.createContext();
 export default function TopicProvider(props) {
 	const { userAxios } = useContext(UserContext);
 	const { currentCategory } = useContext(CategoryContext);
-	const [topics, setTopics] = useState([]);
+	const [topics, setTopics] = useState([{title: "HTML"}, {title: "CSS"}, {title: "Javascript"}, {title: "React"}, {title: "ES6"}])
 	const [currentTopic, setCurrentTopic] = useState(null);
 	
 	useEffect(() => {
@@ -22,6 +22,7 @@ export default function TopicProvider(props) {
 	}, [currentCategory]);
 	
 	const addTopic = (topic, post) => {
+		console.log("Current Category", currentCategory)
 		userAxios.post(`/api/topics/${currentCategory}`, {topic, post}).then(response => {
 			setTopics(prevTopics => [...prevTopics, response.data]);
 		}).catch(err => console.dir(err));
@@ -42,9 +43,9 @@ export default function TopicProvider(props) {
 		}).catch(err => console.dir(err));
 	};
 	
-	const value = {topics, currentTopic, setCurrentTopic, addTopic, updatetopic, deleteTopic};
+
 	return (
-		<TopicContext.Provider value={value}>
+		<TopicContext.Provider value = {{topics, currentTopic, setCurrentTopic, addTopic, updatetopic, deleteTopic}}>
 			{props.children}
 		</TopicContext.Provider>
 	);

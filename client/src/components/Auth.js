@@ -36,7 +36,7 @@ export default function Auth(){
             handleChange={handleChange}
             handleSubmit={handleSignup}
             inputs={inputs}
-            btnText="Sign up"
+            btntext="Sign up"
           />
           <div className="alreadyMember">
           <p onClick={() => setToggle(prev => !prev)}>Already a member?</p>
