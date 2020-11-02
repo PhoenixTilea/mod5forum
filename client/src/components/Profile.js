@@ -3,6 +3,7 @@ import Posts from './Posts.js'
 import Menu from './Menu.js'
 import Topics from './Topics.js'
 import { UserContext } from '../context/UserContext'
+import {Route, Link, Redirect} from 'react-router-dom'
 
 
 
@@ -12,6 +13,7 @@ export default function Profile(props){
     <div className="App" id="profile">
       
       <Menu  logout={ logout }/>
+
       <Topics />
       <Posts />
     </div>

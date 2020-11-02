@@ -2,16 +2,20 @@ import React, {useState, useEffect, useRef, useContext} from "react"
 import User from "./User"
 import Categories from "./Categories"
 import { Link } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
+import Auth from './Auth'
 
 
 
-
+///set currentCategory with _id   and do the same for topic set currrentCategory
 
 export default function Menu (props){
     const { logout, inputs } = props
     const dropdownRef = useRef(null);
     const [isActive, setIsActive]= useState(false);
     const onClick = () => setIsActive(!isActive);
+    
+   
 
     useEffect(()=> {
         const pageClickEvent = (e) => {
@@ -28,10 +32,10 @@ export default function Menu (props){
         }
      }, [isActive])
 
-     function handleLogout(e){
-        e.preventDefault()
-        logout(inputs)
-      }
+    //  function handleLogout(e){
+    //     e.preventDefault()
+    //     logout(inputs)
+    //   }
 
     return(
         <>
@@ -44,7 +48,8 @@ export default function Menu (props){
                 <img className="menu-img"src= "https://static.thenounproject.com/png/696519-200.png"  alt="menu"/>
              </button>
                 <User />
-                <button onClick={ logout }>Logout</button>
+                <button onClick={ logout }><Link to="/">
+                    Logout</Link></button> 
                 <img className="v-school-logo" src="https://media-exp1.licdn.com/dms/image/C560BAQEbL8tsKTdbXA/company-logo_200_200/0?e=2159024400&v=beta&t=dHUW39BvOzMcgmpcQNsmgdcQlSHSgge4aPbnpXEGabM" alt="v-school logo"/>
                 <h3 className="forum-label">FORUM</h3>
                 

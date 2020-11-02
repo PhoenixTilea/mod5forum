@@ -33,7 +33,7 @@ export default function Post(props){
           <>
           <AddPostForm  
             text={text}
-            btnText="Submit Edit"
+            btntext="Submit Edit"
             />
             <button className="closeEditing"
                 onClick={()=> setEditToggle(prevEditToggle => !prevEditToggle)}>

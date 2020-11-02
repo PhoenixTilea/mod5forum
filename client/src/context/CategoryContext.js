@@ -6,11 +6,12 @@ export const CategoryContext = React.createContext();
 
 export default function CategoryProvider(props) {
 	const { userAxios } = useContext(UserContext);
-	const [categories, setCategories] = useState([]);
-	const [currentCategory, setCurrentCategory] = useState(null); // Should be a category ID
+	const [categories, setCategories] = useState([{title: "Web Development"}, {title: "User Interface UI"}, {title: "Career Development"}, {title: "Alumni"}]);
+	const [currentCategory, setCurrentCategory] = useState(); // Should be a category ID
 	
 	useEffect(() => {
 		axios.get("/categories").then(response => {
+			console.log("Category Response", response)
 			setCategories(response.data);
 		}).catch(err => console.dir(err));
 		// eslint-disable-next-line

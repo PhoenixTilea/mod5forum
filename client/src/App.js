@@ -13,7 +13,6 @@ import {UserContext} from './context/UserContext.js'
 
 function App() {
   const { token } = useContext(UserContext)
-  
 
   //Menu holds Categories(Boards)
   return (

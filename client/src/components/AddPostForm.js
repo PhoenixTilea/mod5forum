@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext} from 'react';
+import {PostContext} from '../context/PostContext.js'
 
 
 export default function AddPostForm(props){
@@ -10,6 +11,7 @@ export default function AddPostForm(props){
          lastEdited: props.lastEdited || ""}
 
     const [inputs, setInputs] = useState(initInputs)
+    const { addPost, updatePost, deletePost, posts } = useContext(PostContext) 
 
     function handleChangePost (e) {
         const {name, value } = e.target
@@ -18,7 +20,7 @@ export default function AddPostForm(props){
 
     function handleSubmitPost(e){
         e.preventDefault()
-        props.addPost(inputs)
+        addPost(inputs)
         setInputs(initInputs)
     }
     return (
