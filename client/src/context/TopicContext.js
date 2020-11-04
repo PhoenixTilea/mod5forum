@@ -6,7 +6,7 @@ import { CategoryContext } from "./CategoryContext";
 export const TopicContext = React.createContext();
 
 export default function TopicProvider(props) {
-	const { userAxios } = useContext(UserContext);
+	const { userState, userAxios } = useContext(UserContext);
 	const { currentCategory } = useContext(CategoryContext);
 	const [topics, setTopics] = useState([{title: "HTML"}, {title: "CSS"}, {title: "Javascript"}, {title: "React"}, {title: "ES6"}])
 	const [currentTopic, setCurrentTopic] = useState(null);

@@ -6,7 +6,7 @@ export default function AddTopicForm(props){
     const [inputs, setInputs] = useState(initInputs)
     const { addTopic, updateTopic, deleteTopic, topics } = useContext(TopicContext)
     
-    
+    console.log(inputs)
 
     function handleChangeTopic (e) {
         const {name, value } = e.target

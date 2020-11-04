@@ -6,6 +6,7 @@ const topicRouter = express.Router();
 
 // Create a new topic under the given category (must include initial post data as well)
 topicRouter.post("/:categoryId", (req, res, next) => {
+	console.log(req.user)
 	const topic = req.body.topic;
 	topic.user = req.user._id;
 	topic.category = req.params.categoryId;

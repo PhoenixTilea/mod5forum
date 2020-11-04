@@ -12,6 +12,7 @@ export default function CategoryProvider(props) {
 	useEffect(() => {
 		axios.get("/categories").then(response => {
 			console.log("Category Response", response)
+			console.log(response.data)
 			setCategories(response.data);
 		}).catch(err => console.dir(err));
 		// eslint-disable-next-line

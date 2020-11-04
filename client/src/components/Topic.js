@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 
 export default function Topic(props){
     const { title } = props
+    console.log(props)
     return (
         <div className="topic">
           <User />
