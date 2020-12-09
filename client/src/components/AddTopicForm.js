@@ -2,9 +2,9 @@ import React, { useState, useContext } from 'react';
 import {TopicContext} from '../context/TopicContext.js'
 
 export default function AddTopicForm(props){
-    const initInputs = { title: "", category: "", user: {}, lastUpdated: ""}
+    const initInputs = { title: "", text: ""}
     const [inputs, setInputs] = useState(initInputs)
-    const { addTopic, updateTopic, deleteTopic, topics } = useContext(TopicContext)
+    const { addTopic } = useContext(TopicContext)
     
     
 
@@ -16,7 +16,8 @@ export default function AddTopicForm(props){
     function handleSubmitTopic(e){
         e.preventDefault()
         
-        addTopic(inputs)
+        const { title, text } = inputs;
+		addTopic({ title }, { text })
         setInputs(initInputs)
     }
     
@@ -28,8 +29,10 @@ export default function AddTopicForm(props){
                 type="text"
                 name="title"
                 value={inputs.title}
-                onChange={handleChange}
+                onChange={handleChangeTopic}
+				required
                 placeholder="Topic Title"/>
+				<textarea name="text" value={inputs.text} onChange={handleChangeTopic} required></textarea>
             
             
             <input id="topic-post"

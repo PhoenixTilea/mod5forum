@@ -22,7 +22,6 @@ export default function TopicProvider(props) {
 	}, [currentCategory]);
 	
 	const addTopic = (topic, post) => {
-		console.log("Current Category", currentCategory)
 		userAxios.post(`/api/topics/${currentCategory}`, {topic, post}).then(response => {
 			setTopics(prevTopics => [...prevTopics, response.data]);
 		}).catch(err => console.dir(err));

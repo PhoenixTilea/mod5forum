@@ -4,14 +4,10 @@ import {PostContext} from '../context/PostContext.js'
 
 export default function AddPostForm(props){
 
-    const initInputs = { text: props.text || "",
-         topic: props.topic || "", 
-         user: props.user || "", 
-         postDate: props.postDate || "", 
-         lastEdited: props.lastEdited || ""}
+    const initInputs = { text: props.text || ""};
 
     const [inputs, setInputs] = useState(initInputs)
-    const { addPost, updatePost, deletePost, posts } = useContext(PostContext) 
+    const { addPost, updatePost } = useContext(PostContext) 
 
     function handleChangePost (e) {
         const {name, value } = e.target
@@ -20,19 +16,22 @@ export default function AddPostForm(props){
 
     function handleSubmitPost(e){
         e.preventDefault()
-        addPost(inputs)
+        if (props._id) {
+			addPost(inputs)
+		} else {
+			updatePost(props._id, inputs);
+		}
         setInputs(initInputs)
     }
     return (
         <form className="post-form"onSubmit={handleSubmitPost}>
-            <input
+            <textarea
                 id="post-content-input"
-                type="text"
                 name="text"
                 value={inputs.text}
                 onChange={handleChangePost}
                 placeholder="Post New Content"
-                />
+                ></textarea>
             
             <button id="add-post-button" >Post</button>
         </form>
