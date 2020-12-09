@@ -8,7 +8,7 @@ export default function AddTopicForm(props){
     
     
 
-    function handleChangeTopic (e) {
+    function handleChange (e) {
         const {name, value } = e.target
         setInputs(prevInputs => ({ ...prevInputs, [name]: value}))
     }
@@ -28,10 +28,16 @@ export default function AddTopicForm(props){
                 type="text"
                 name="title"
                 value={inputs.title}
-                onChange={handleChangeTopic}
+                onChange={handleChange}
                 placeholder="Topic Title"/>
             
-            <button id="add-topic-button">Add Topic</button>
+            
+            <input id="topic-post"
+                type="text"
+                value={inputs.post}
+                onChange={handleChange}
+                placeholder="Topic Post"/>
+            <button id="add-topic-button">Add Topic and Post</button>    
         </form>
     )
 }

@@ -19,6 +19,10 @@ const topicSchema = new Schema({
 	lastUpdated: {
 		type: Date,
 		default: Date.now()
+	},
+	post: {
+		type: String,
+		required: true
 	}
 });
 
