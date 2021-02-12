@@ -14,7 +14,10 @@ export default function UserProvider(props) {
     const initState = {
         user: {},
         token: localStorage.getItem("token") || "",
-        //ITEMS???????  DATA???????
+        categories:[],//ITEMS???????  DATA???????
+        topics: [],
+        posts: [],
+        errMsg: ''
     }
     const [userState, setUserState] = useState(initState)
 	
@@ -41,7 +44,7 @@ export default function UserProvider(props) {
                     token
                 }))
             })
-            .catch(err => console.dir(err)) //err.message
+            .catch(err => handleAuthErr(err.response.data.errMsg)) //err.message
     }
 
     function login(credentials) {
@@ -56,7 +59,7 @@ export default function UserProvider(props) {
                     token
                 }))
             })
-            .catch(err => console.dir(err)); 
+            .catch(err => handleAuthErr(err.response.data.errMsg)); 
     }
 
     function logout() {
@@ -65,7 +68,12 @@ export default function UserProvider(props) {
         setUserState(initState)
 
     }
-
+    function handleAuthErr(errMsg){
+        setUserState(prevState => ({
+            ...prevState, 
+            errMsg
+        }))
+    }
     // function getData???????
 
     return (

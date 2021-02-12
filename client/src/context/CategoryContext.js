@@ -7,7 +7,7 @@ export const CategoryContext = React.createContext();
 export default function CategoryProvider(props) {
 	const { userAxios } = useContext(UserContext);
 	const [categories, setCategories] = useState([{title: "Web Development"}, {title: "User Interface UI"}, {title: "Career Development"}, {title: "Alumni"}]);
-	const [currentCategory, setCurrentCategory] = useState(); // Should be a category ID
+	const [currentCategory, setCurrentCategory] = useState(categories._id); // Should be a category ID
 	
 	useEffect(() => {
 		axios.get("/categories").then(response => {
