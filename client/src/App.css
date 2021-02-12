@@ -275,7 +275,7 @@ img.menu-img {
  }
  
  .menu li {
-  background: #FBE2E2;
+  background: #fbe2e2f6;
    text-decoration: none;
    font-family: 'Roboto', sans-serif;
    font-weight: bolder;
@@ -319,8 +319,9 @@ transform: translateY(-20px);
 transition: opacity 1s ease, transform 1s ease, visibility 1s;
 left: 0px;
 top: 0px;
-background: #B86363;
-opacity: .9;
+background: #b86363d5;
+
+
 
 
 }
@@ -356,9 +357,9 @@ opacity: .9;
   padding: 5px;
   font-family: 'Roboto', sans-serif;
 }
-#topic-input {
+.topic-form {
   position: relative;
-  top: 30px;
+  top: 50px;
   padding: 5px;
   margin: 5px;
 

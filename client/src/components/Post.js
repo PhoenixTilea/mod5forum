@@ -1,17 +1,22 @@
-import React, {useState} from "react"
+import React, {useState, useContext} from "react"
 import User from "./User"
 import AddPostForm from "./AddPostForm"
+//import TopicContext from '../context/TopicContext'
 
 
 export default function Post(props){
-    const { text, title ,_id} = props
-
+    const { topic, text, title ,_id} = props
+    //const {topic} = useContext(TopicContext)
     const [editToggle, setEditToggle] = useState(false)
 
     
     
     return (
         <div className="post">
+            {//initial post made by original User who made the topic
+            }       
+            <h3 className="post-title">{topic.title}</h3>
+            <p id="post-content">{topic.text}</p>
             {!editToggle ?
             <>
             <User />

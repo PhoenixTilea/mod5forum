@@ -22,7 +22,7 @@ app.use("/posts", require("./routes/postRouter"));
 app.use("/auth", require("./routes/authRouter"));
 
 // Protected/signed routes
-app.use("/api", expressJwt({ secret: process.env.SECRET, algorithms: ["HS256"] }))
+app.use("/api/", expressJwt({ secret: process.env.SECRET, algorithms: ["HS256"] }))
 app.use("/api/categories", require("./routes/protectedCategoryRouter"));
 app.use("/api/topics", require("./routes/protectedTopicRouter"));
 app.use("/api/posts", require("./routes/protectedPostRouter"));
